@@ -23,10 +23,11 @@ yvalueslist = []
 for xvalue in range(-500, 500):
     # This calculates slope, and the reason we have a * -1 is for pygame basically counting every pixel down or right as
     # positive, completely opposite from how we normally graph it. So, we need the slope reversed.
+    # Note that ** means to the power of, so x to the power of our selected exponent.
     yvalue = (xvalue ** exponent) * slope * -1
     # Here you can see we add 500 to our x and y value. This to center our line to our window. When we run this, our
     # line starts are 0, 0, the top left corner of the screen. We want it to start in the center, so by adding 500 to
-    # both the default x and y values, it goes down (pos y)) to the verical center, and then right (pos x) to the
+    # both the default x and y values, it goes down (pos y)) to the vertical center, and then right (pos x) to the
     # horizontal center.
     yvalue -= bvalue - 500
     xvalue += 500
