@@ -1,10 +1,12 @@
 import os
 import pygame
+import decimal
 
 blackpix = pygame.image.load('singularblackpixel.png')
 
-slope = int(input('Please put your slope (integer): '))
+slope = decimal.Decimal(input('Please put your slope: '))
 bvalue = int(input('Please put your b value (integer): '))
+exponent = int(input('Please put your exponent: '))
 
 # Initialization
 pygame.init()
@@ -21,7 +23,7 @@ yvalueslist = []
 for xvalue in range(-500, 500):
     # This calculates slope, and the reason we have a * -1 is for pygame basically counting every pixel down or right as
     # positive, completely opposite from how we normally graph it. So, we need the slope reversed.
-    yvalue = xvalue * slope * -1
+    yvalue = (xvalue ** exponent) * slope * -1
     # Here you can see we add 500 to our x and y value. This to center our line to our window. When we run this, our
     # line starts are 0, 0, the top left corner of the screen. We want it to start in the center, so by adding 500 to
     # both the default x and y values, it goes down (pos y)) to the verical center, and then right (pos x) to the
@@ -45,7 +47,7 @@ while running:
     # the correct y value.
     for selectedxvalue in xvalueslist:
         # Loading command.
-        window.blit(blackpix, (selectedxvalue, yvalueslist[selectedxvalue]))
+        window.blit(blackpix, (selectedxvalue, round(yvalueslist[selectedxvalue])))
         # Next line can simply print current x and y value. Really only helpful for when troubleshooting program.
         # print(f'{selectedxvalue} and {yvalueslist[selectedxvalue]}')
 
